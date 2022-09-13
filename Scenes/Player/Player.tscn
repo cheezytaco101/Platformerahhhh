@@ -1,0 +1,76 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/Shaders/WhiteUnshaded.tres" type="Material" id=1]
+[ext_resource path="res://Assets/Shaders/BlackUnshaded.tres" type="Material" id=2]
+[ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Textures/DustRing.png" type="Texture" id=4]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0.185219 ), 0.0, 0.0, 0, 0, Vector2( 0.744565, 0.997727 ), 2.50909, 2.50909, 0, 0, Vector2( 1, 0.488636 ), 2.3697, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+scale = 1.5
+scale_curve = SubResource( 10 )
+
+[sub_resource type="SpatialMaterial" id=7]
+flags_transparent = true
+flags_unshaded = true
+albedo_texture = ExtResource( 4 )
+
+[sub_resource type="PlaneMesh" id=8]
+material = SubResource( 7 )
+
+[sub_resource type="CubeMesh" id=3]
+material = ExtResource( 1 )
+
+[sub_resource type="CubeMesh" id=4]
+material = ExtResource( 2 )
+size = Vector3( 1.5, 0.05, 0.5 )
+
+[sub_resource type="CubeMesh" id=5]
+material = ExtResource( 2 )
+size = Vector3( 0.1, 0.1, 0.5 )
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="JumpDust" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05415, 0 )
+emitting = false
+amount = 1
+lifetime = 0.2
+one_shot = true
+local_coords = false
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 8 )
+
+[node name="Body" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Mouth" type="MeshInstance" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.338, 0.76 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Eye" type="MeshInstance" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.095, 0.76 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Eye2" type="MeshInstance" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.095, 0.76 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Tween" type="Tween" parent="."]
