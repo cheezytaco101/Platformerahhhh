@@ -18,6 +18,8 @@ func _physics_process(delta):
 	velocity.y += gravity(delta)
 	animation()
 	move_and_slide(velocity, Vector3.UP)
+	if is_on_floor():
+		velocity.y = damp(velocity.y, 0, 7)
 	
 func get_input():
 	
@@ -58,13 +60,16 @@ func jump(force):
 	
 func animation():
 	
+	var body = get_node("Body")
+	
 	if !is_on_floor():
-		scale.y = abs(velocity.y / 100) + 1
+		body.scale.x = abs(velocity.x / 100) - abs(velocity.y /400) + 1
+		body.scale.y = abs(velocity.y / 100) + 1
+		body.scale.z = abs(velocity.z / 100) - abs(velocity.y /400) + 1
 	else:
-		scale.y = 1
-		
-	scale.x = abs(velocity.x / 100) + 1
-	scale.z = abs(velocity.z / 100) + 1
+		body.scale.x = abs(velocity.x / 100) + abs(velocity.y /100) + 1
+		body.scale.y = -abs(velocity.y / 100) + 1
+		body.scale.z = abs(velocity.z / 100) + abs(velocity.y /100) + 1
 	
 func damp(var1, var2, damp_val):
 	
