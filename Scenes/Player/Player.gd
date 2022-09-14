@@ -8,7 +8,6 @@ var gravity_delta = 0
 var jump_force = 20
 
 onready var tween = get_node("Tween")
-onready var jump_dust = get_node("JumpDust")
 
 func _physics_process(delta):
 	
@@ -55,21 +54,30 @@ func jump(force):
 	
 	velocity.y = force
 	gravity_delta = 0
-	jump_dust.restart()
-	jump_dust.emitting = true
+	get_node("RayCast").enabled = true
 	
 func animation():
 	
 	var body = get_node("Body")
+	var light = get_node("Light")
+	var ray = get_node("RayCast")
 	
 	if !is_on_floor():
 		body.scale.x = abs(velocity.x / 100) - abs(velocity.y /400) + 1
 		body.scale.y = abs(velocity.y / 100) + 1
 		body.scale.z = abs(velocity.z / 100) - abs(velocity.y /400) + 1
+		light.light_energy = 0
 	else:
 		body.scale.x = abs(velocity.x / 100) + abs(velocity.y /100) + 1
 		body.scale.y = -abs(velocity.y / 100) + 1
 		body.scale.z = abs(velocity.z / 100) + abs(velocity.y /100) + 1
+		light.light_energy = abs(velocity.y / 5)
+		
+	if is_on_floor() and ray.is_colliding():
+		var col = ray.get_collider()
+		if col.has_method("landed"):
+			col.landed(velocity.y)
+		ray.enabled = false
 	
 func damp(var1, var2, damp_val):
 	
