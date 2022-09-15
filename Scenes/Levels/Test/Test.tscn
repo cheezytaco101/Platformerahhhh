@@ -1,18 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Shaders/BlackUnshaded.tres" type="Material" id=2]
+[ext_resource path="res://Scenes/Platforms/PillarTopDot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Levels/Test/Camera.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/Platforms/PillarNoDots.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Platforms/PillarThiccNoDot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Platforms/PillarThicc.tscn" type="PackedScene" id=6]
-
-[sub_resource type="CubeMesh" id=1]
-material = ExtResource( 2 )
-size = Vector3( 100, 2, 100 )
-
-[sub_resource type="ConcavePolygonShape" id=2]
-data = PoolVector3Array( -50, 1, 50, 50, 1, 50, -50, -1, 50, 50, 1, 50, 50, -1, 50, -50, -1, 50, 50, 1, -50, -50, 1, -50, 50, -1, -50, -50, 1, -50, -50, -1, -50, 50, -1, -50, 50, 1, 50, 50, 1, -50, 50, -1, 50, 50, 1, -50, 50, -1, -50, 50, -1, 50, -50, 1, -50, -50, 1, 50, -50, -1, -50, -50, 1, 50, -50, -1, 50, -50, -1, -50, 50, 1, 50, -50, 1, 50, 50, 1, -50, -50, 1, 50, -50, 1, -50, 50, 1, -50, -50, -1, 50, 50, -1, 50, -50, -1, -50, 50, -1, 50, 50, -1, -50, -50, -1, -50 )
+[ext_resource path="res://Scenes/Platforms/PillarWide.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Environment" id=3]
 ambient_light_color = Color( 1, 1, 1, 1 )
@@ -26,17 +20,6 @@ transform = Transform( 1, 0, 0, 0, 0.890943, 0.454115, 0, -0.454115, 0.890943, 0
 current = true
 script = ExtResource( 3 )
 
-[node name="Platform" type="StaticBody" parent="."]
-
-[node name="MeshInstance" type="MeshInstance" parent="Platform"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.32945, 0 )
-mesh = SubResource( 1 )
-material/0 = null
-
-[node name="CollisionShape" type="CollisionShape" parent="Platform"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.32945, 0 )
-shape = SubResource( 2 )
-
 [node name="Pillars" type="Spatial" parent="."]
 
 [node name="PillarNoDots" parent="Pillars" instance=ExtResource( 4 )]
@@ -48,14 +31,32 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51271, 6.30514, -5 )
 [node name="PillarThicc" parent="Pillars" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 3, -7 )
 
+[node name="PillarThicc4" parent="Pillars" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.27048, 12.1829, -28.1739 )
+
+[node name="PillarThicc5" parent="Pillars" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.27048, 8.48407, -28.1739 )
+
+[node name="PillarThicc6" parent="Pillars" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.27048, 3.79305, -28.1739 )
+
+[node name="PillarThicc7" parent="Pillars" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.27048, -1.28956, -28.1739 )
+
 [node name="PillarThiccNoDot" parent="Pillars" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1.32298, 5 )
 
 [node name="PillarThicc2" parent="Pillars" instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18.1671, 2.97318, -4.58029 )
 
+[node name="PillarThicc3" parent="Pillars" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.446, 4.90028, -13.0806 )
+
 [node name="PillarThiccNoDot3" parent="Pillars" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20969, -0.287054, 10.2549 )
+
+[node name="PillarThiccNoDot6" parent="Pillars" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73401, -0.287052, -21.1934 )
 
 [node name="PillarThiccNoDot4" parent="Pillars" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35089, -0.73585, 3.68317 )
@@ -65,6 +66,12 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24416, -1.45174, 12.4917 )
 
 [node name="PillarThiccNoDot5" parent="Pillars" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1754, -0.820252, 10.8666 )
+
+[node name="PillarTopDot" parent="Pillars" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.66897, 9.22254, -21.1366 )
+
+[node name="PillarWide" parent="Pillars" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5186, 0.583066, 9.89896 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )

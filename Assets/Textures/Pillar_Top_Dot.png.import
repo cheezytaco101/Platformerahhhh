@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Pillar3-export.png-3416095488ea6100ed26aac7b7fee55f.stex"
+path="res://.import/Pillar_Top_Dot.png-efee7edf105627cc109f90633aece810.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Pillar3-export.png"
-dest_files=[ "res://.import/Pillar3-export.png-3416095488ea6100ed26aac7b7fee55f.stex" ]
+source_file="res://Assets/Textures/Pillar_Top_Dot.png"
+dest_files=[ "res://.import/Pillar_Top_Dot.png-efee7edf105627cc109f90633aece810.stex" ]
 
 [params]
 

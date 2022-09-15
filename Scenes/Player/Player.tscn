@@ -24,7 +24,6 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="Light" type="OmniLight" parent="."]
-visible = false
 light_color = Color( 1, 0, 0, 1 )
 light_energy = 5.0
 light_negative = true

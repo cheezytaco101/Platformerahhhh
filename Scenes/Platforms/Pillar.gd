@@ -9,7 +9,7 @@ func _process(delta):
 
 func landed(force):
 	transform.origin.y += force / force_damp
-	#get_node("default").get_surface_material(0).albedo_color = flash_color
+	#get_node("default").get_surface_material(1).albedo_color = flash_color
 	
 func damp(var1, var2, damp_val):
 	

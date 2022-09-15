@@ -33,7 +33,8 @@ func get_input():
 	if Input.is_action_pressed("West"):
 		input_velocity.x += -1
 	if Input.is_action_just_pressed("Jump"):
-		jump(jump_force)
+		if is_on_floor():
+			jump(jump_force)
 		
 	return input_velocity.normalized()
 	
